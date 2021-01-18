@@ -276,7 +276,7 @@ public class MainActivity extends AppCompatActivity {
                 catch (Exception e){
                     screenText.append("Invalid input");
                     screenTextView.setText(screenText.toString());
-                    //screenText
+                    screenText = new StringBuilder();
                     //screenTextView.setText(screenText.toString());
                 }
             }
