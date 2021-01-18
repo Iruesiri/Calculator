@@ -35,10 +35,10 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/ce"
+            android:id="@+id/percent"
             android:layout_weight="1"
             android:textSize="20sp"
-            android:text="CE"
+            android:text="%"
             android:layout_margin="2dp"
             android:background="#6A6565" />
         <Button
@@ -212,10 +212,10 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/random"
+            android:id="@+id/negate"
             android:layout_weight="1"
             android:textSize="20sp"
-            android:text="RAN"
+            android:text="-/+"
             android:layout_margin="2dp"
             android:background="#9C9595" />
         <Button

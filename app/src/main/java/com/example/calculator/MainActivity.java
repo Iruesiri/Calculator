@@ -9,12 +9,12 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-    public static final String TAG = "tag";
+   //public static final String TAG = "tag";
     StringBuilder screenText;
     TextView screenTextView;
-    double result1; double result2; String operator; Double newResult; String returnResult;
-    Button buttonOne; Button buttonTwo; Button buttonThree;
-    Button buttonFour; Button buttonFive; Button buttonSix;
+    double result1; double result2; String operator; Double newResult; Double negateResult; String returnResult;
+    Button buttonOne; Button buttonTwo; Button buttonThree; Button buttonPercent;
+    Button buttonFour; Button buttonFive; Button buttonSix; Button buttonNegate;
     Button buttonSeven; Button buttonEight; Button buttonNine; Button buttonZero;
     Button buttonAdd; Button buttonSubtract; Button buttonDivide; Button buttonMultiply;
     Button buttonDelete; Button buttonClear; Button buttonDot; Button buttonEqual;
@@ -43,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
         buttonClear = findViewById(R.id.clear);
         buttonDot = findViewById(R.id.dot);
         buttonEqual = findViewById(R.id.equal);
+        buttonNegate = findViewById(R.id.negate);
+        buttonPercent = findViewById(R.id.percent);
 
         init();
     }
@@ -120,11 +122,14 @@ public class MainActivity extends AppCompatActivity {
         buttonDot.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                if (screenText.toString().isEmpty())
-                    screenText.append("0.");
-                else
-                    screenText.append(".");
-                screenTextView.setText(screenText.toString());
+                try {
+                    if (screenText.toString().isEmpty())
+                        screenText.append("0.");
+                    else
+                        screenText.append(".");
+                    screenTextView.setText(screenText.toString());
+                }
+                catch (Exception e){}
             }
         });
         buttonClear.setOnClickListener(new View.OnClickListener(){
@@ -146,77 +151,133 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
                 screenTextView.setText(screenText.toString());
-
+            }
+        });
+        buttonPercent.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                try {
+                    double result =  Double.valueOf(screenTextView.getText().toString());
+                    Double percentResult = result/100;
+                    screenText = new StringBuilder();
+                    screenText.append(percentResult.toString());
+                    screenTextView.setText(screenText.toString());
+                }
+                catch (Exception e){
+                }
+            }
+        });
+        buttonNegate.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                try {
+                    double result =  Double.valueOf(screenTextView.getText().toString());
+                    negateResult = 0 - result;
+                    screenText = new StringBuilder();
+                    screenText.append(negateResult.toString());
+                    screenTextView.setText(screenText.toString());
+                }
+                catch (Exception e){
+                }
             }
         });
         buttonAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                result1 =  Double.valueOf(screenTextView.getText().toString());
-                operator = "+";
-                screenText = new StringBuilder();
-                screenTextView.setText("+");
+                try {
+                    result1 =  Double.valueOf(screenTextView.getText().toString());
+                    operator = "+";
+                    screenText = new StringBuilder();
+                    screenTextView.setText("+");
+                }
+                catch (Exception e){}
             }
         });
         buttonSubtract.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                result1 =  Double.valueOf(screenTextView.getText().toString());
-                operator = "-";
-                screenText = new StringBuilder();
-                screenTextView.setText("-");
-                //if statement for negative
+                try {
+                    result1 =  Double.valueOf(screenTextView.getText().toString());
+                    operator = "-";
+                    screenText = new StringBuilder();
+                    screenTextView.setText(" -");
+                }
+                catch (Exception e){
+                    screenText.append("Invalid input");
+                    screenTextView.setText(screenText.toString());
+                }
             }
         });
         buttonMultiply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                result1 =  Double.valueOf(screenTextView.getText().toString());
-                operator = "x";
-                screenText = new StringBuilder();
-                screenTextView.setText("x");
+                try {
+                    result1 =  Double.valueOf(screenTextView.getText().toString());
+                    operator = "x";
+                    screenText = new StringBuilder();
+                    screenTextView.setText("x");
+                }
+                catch (Exception e){}
             }
         });
         buttonDivide.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                result1 =  Double.valueOf(screenTextView.getText().toString());
-                operator = "/";
-                screenText = new StringBuilder();
-                screenTextView.setText("/");
+                try {
+                    result1 =  Double.valueOf(screenTextView.getText().toString());
+                    operator = "/";
+                    screenText = new StringBuilder();
+                    screenTextView.setText("/");
+                }
+                catch (Exception e){}
             }
         });
 
         buttonEqual.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                result2 = Double.valueOf(screenTextView.getText().toString());
-                switch (operator){
-                    case "+":
-                        Double newResults = result1 + result2;
-                        //returnResult = result1 + "+" +result2 +"=" + newResults;
-                        screenText = new StringBuilder();
-                        screenText.append(newResults);
-                        screenTextView.setText(screenText.toString());
-                        break;
-                    case "-":
-                        newResult = result1 - result2;
-                        screenText = new StringBuilder();
-                        screenText.append(newResult.toString());
-                        screenTextView.setText(screenText.toString());
-                        break;
-                    case "x":
-                        newResult = result1 * result2;
-                        screenText = new StringBuilder();
-                        screenText.append(newResult.toString());
-                        screenTextView.setText(screenText.toString());
-                        break;
-                    case "/":
-                        newResult = result1/result2;
-                        screenText = new StringBuilder();
-                        screenText.append(newResult.toString());
-                        screenTextView.setText(screenText.toString());
-                        break;
+                try {
+                    if (screenText.toString().isEmpty())
+                        result2 = 0.0;
+                    else
+                        result2 = Double.valueOf(screenTextView.getText().toString());
+                    switch (operator) {
+                        case "+":
+                            newResult = result1 + result2;
+                            //returnResult = result1 + "+" +result2 +"=" + newResult;
+                            screenText = new StringBuilder();
+                            screenText.append(newResult);
+                            screenTextView.setText(screenText.toString());
+                            break;
+                        case "-":
+                            newResult = result1 - result2;
+                            screenText = new StringBuilder();
+                            screenText.append(newResult.toString());
+                            screenTextView.setText(screenText.toString());
+                            break;
+                        case "x":
+                            newResult = result1 * result2;
+                            screenText = new StringBuilder();
+                            screenText.append(newResult.toString());
+                            screenTextView.setText(screenText.toString());
+                            break;
+                        case "/":
+                            screenText = new StringBuilder();
+                            if (result2 == 0) {
+                                screenText.append("Cannot divide by zero");
+                            } else {
+                                newResult = result1 / result2;
+                                screenText.append(newResult.toString());
+                            }
+                            screenTextView.setText(screenText.toString());
+                            break;
+                    }
+                }
+                catch (Exception e){
+                    screenText.append("Invalid input");
+                    screenTextView.setText(screenText.toString());
+                    //screenText
+                    //screenTextView.setText(screenText.toString());
                 }
             }
         });
