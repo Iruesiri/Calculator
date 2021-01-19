@@ -267,24 +267,24 @@ public class MainActivity extends AppCompatActivity {
         });
     }
     private Double operations(String operator, Double val){
-        Double returnValue = 0.0;
+        Double returnVal = 0.0;
         switch (operator) {
             case "+":
-                returnValue = result1 + val;
+                returnVal = result1 + val;
                 break;
             case "-":
-                returnValue = result1 - val;
+                returnVal = result1 - val;
                 break;
             case "x":
-                returnValue = result1 * val;
+                returnVal = result1 * val;
                 break;
             case "/":
-                returnValue = result1 / val;
+                returnVal = result1 / val;
                 break;
             case "":
-                returnValue = val;
+                returnVal = val;
                 break;
         }
-        return returnValue;
+        return returnVal;
     }
 }
