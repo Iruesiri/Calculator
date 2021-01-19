@@ -220,6 +220,7 @@ public class MainActivity extends AppCompatActivity {
                     operator = "x";
                     screenText = new StringBuilder();
                     screenTextView.setText("x");
+
                 }
                 catch (Exception e){}
             }
