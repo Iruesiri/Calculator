@@ -1,18 +1,20 @@
 package com.example.calculator;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
    //public static final String TAG = "tag";
     StringBuilder screenText;
     TextView screenTextView;
-    double result1; double result2; String operator; Double newResult; Double negateResult; String returnResult;
+    double result1 = 0;
+    double result2 = 0;
+    String operator = "";
+    Double newResult; Double negateResult; String returnResult;
     Button buttonOne; Button buttonTwo; Button buttonThree; Button buttonPercent;
     Button buttonFour; Button buttonFive; Button buttonSix; Button buttonNegate;
     Button buttonSeven; Button buttonEight; Button buttonNine; Button buttonZero;
@@ -137,6 +139,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 screenText = new StringBuilder();
                 screenTextView.setText("0");
+                result1 = 0;
+                operator = "";
             }
         });
         buttonDelete.setOnClickListener(new View.OnClickListener(){
@@ -185,7 +189,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 try {
-                    result1 =  Double.valueOf(screenTextView.getText().toString());
+                    result1 =  operations(operator,Double.valueOf(screenTextView.getText().toString()));
                     operator = "+";
                     screenText = new StringBuilder();
                     screenTextView.setText("+");
@@ -197,7 +201,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 try {
-                    result1 =  Double.valueOf(screenTextView.getText().toString());
+                    result1 =  operations(operator,Double.valueOf(screenTextView.getText().toString()));
                     operator = "-";
                     screenText = new StringBuilder();
                     screenTextView.setText(" -");
@@ -212,7 +216,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 try {
-                    result1 =  Double.valueOf(screenTextView.getText().toString());
+                    result1 =  operations(operator,Double.valueOf(screenTextView.getText().toString()));
                     operator = "x";
                     screenText = new StringBuilder();
                     screenTextView.setText("x");
@@ -224,7 +228,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 try {
-                    result1 =  Double.valueOf(screenTextView.getText().toString());
+                    result1 =  operations(operator,Double.valueOf(screenTextView.getText().toString()));
                     operator = "/";
                     screenText = new StringBuilder();
                     screenTextView.setText("/");
@@ -237,41 +241,20 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 try {
-                    if (screenText.toString().isEmpty())
-                        result2 = 0.0;
-                    else
-                        result2 = Double.valueOf(screenTextView.getText().toString());
-                    switch (operator) {
-                        case "+":
-                            newResult = result1 + result2;
-                            //returnResult = result1 + "+" +result2 +"=" + newResult;
-                            screenText = new StringBuilder();
-                            screenText.append(newResult);
-                            screenTextView.setText(screenText.toString());
-                            break;
-                        case "-":
-                            newResult = result1 - result2;
-                            screenText = new StringBuilder();
-                            screenText.append(newResult.toString());
-                            screenTextView.setText(screenText.toString());
-                            break;
-                        case "x":
-                            newResult = result1 * result2;
-                            screenText = new StringBuilder();
-                            screenText.append(newResult.toString());
-                            screenTextView.setText(screenText.toString());
-                            break;
-                        case "/":
-                            screenText = new StringBuilder();
-                            if (result2 == 0) {
-                                screenText.append("Cannot divide by zero");
-                            } else {
-                                newResult = result1 / result2;
-                                screenText.append(newResult.toString());
-                            }
-                            screenTextView.setText(screenText.toString());
-                            break;
-                    }
+                    result2 = Double.valueOf(screenTextView.getText().toString());
+                    screenText = new StringBuilder();
+                    if (operator.equals("/")) {
+                        if (result2 == 0)
+                            screenText.append("Cannot divide by zero");
+                        else
+                            newResult = operations(operator, result2);
+                    } else
+                        newResult = operations(operator, result2);
+                    screenText.append(newResult);
+                    screenTextView.setText(screenText.toString());
+                    result1 = 0;
+                    screenText = new StringBuilder();
+                    operator = "";
                 }
                 catch (Exception e){
                     screenText.append("Invalid input");
@@ -281,6 +264,26 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
+    }
+    private Double operations(String operator, Double val){
+        Double returnValue = 0.0;
+        switch (operator) {
+            case "+":
+                returnValue = result1 + val;
+                break;
+            case "-":
+                returnValue = result1 - val;
+                break;
+            case "x":
+                returnValue = result1 * val;
+                break;
+            case "/":
+                returnValue = result1 / val;
+                break;
+            case "":
+                returnValue = val;
+                break;
+        }
+        return returnValue;
     }
 }
