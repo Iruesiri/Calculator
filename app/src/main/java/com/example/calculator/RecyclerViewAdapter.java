@@ -1,25 +1,24 @@
 package com.example.calculator;
 
 import android.content.Context;
+import android.media.Rating;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.calculator.model.UniversityModel;
+
 import java.util.ArrayList;
 
-/**
- * @author .: Ossai Michael
- * @email ..: mikeossaiofficial@gmail.com, michael.ossai@cwg-plc.com
- * @created : 20/01/2021 11:54
- */
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
-   ArrayList<String> universities;
-   Context context;
-    public RecyclerViewAdapter(ArrayList<String> universities, Context context) {
+    ArrayList<UniversityModel> universities;
+    Context context;
+    public RecyclerViewAdapter(ArrayList<UniversityModel> universities, Context context) {
         this.universities = universities;
         this.context = context;
     }
@@ -33,7 +32,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.universityName.setText(universities.get(position));
+        holder.universityName.setText(universities.get(position).getUniversityName());
+        holder.universityState.setText(universities.get(position).getUniversityState());
+        holder.universityType.setText(universities.get(position).universityType);
+        //holder.universityName.setText(universities.get(position));
     }
 
     @Override
@@ -41,13 +43,17 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         return universities.size();
     }
 
-
     public class ViewHolder extends RecyclerView.ViewHolder{
-        TextView universityName, universityState;
+        TextView universityName, universityState, universityType;
+        //ImageView universityImage; View cardView; Rating universityRating;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             universityName = itemView.findViewById(R.id.universityName);
             universityState = itemView.findViewById(R.id.universityState);
+            universityType = itemView.findViewById(R.id.universityType);
+            //universityImage = itemView.findViewById(R.id.image);
+            //universityRating = itemView.findViewById(R.id.ratings);
+            //View cardView = itemView.findViewById(R.id.empty);
         }
     }
 }

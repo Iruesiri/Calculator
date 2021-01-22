@@ -28,14 +28,17 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 username = usernameEditText.getText().toString();
                 password = passwordEditText.getText().toString();
+                String[] parameters = {"esiri", "esiri"};
 
-                if (username.equals("Esiri") && password.equals("esiri")){
+                new HttpPractice(LoginActivity.this, parameters).execute();
+
+                /*if (username.equals("Esiri") && password.equals("esiri")){
                     Intent intent = new Intent(LoginActivity.this, RecyclerViewActivity.class);
                     startActivity(intent);
                 }
                 else {
                     Toast.makeText(LoginActivity.this, "Username or Password incorrect", Toast.LENGTH_LONG).show();
-                }
+                }*/
             }
         });
     }

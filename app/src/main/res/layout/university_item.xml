@@ -1,24 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:layout_margin="10dp"
-    android:paddingHorizontal="10dp"
-    android:background="@color/material_on_background_emphasis_medium">
-
-    <TextView
+    <androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/universityName"
-        android:text="university name"
-        android:textSize="16sp"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/universityState"
-        android:text="university state"
-        android:textSize="16sp"/>
+        android:id="@+id/cardView">
+        <LinearLayout
+            android:layout_width="350dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_margin="10dp"
+            android:paddingHorizontal="10dp">
 
-</LinearLayout>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/skyscrapper"
+                android:id="@+id/image"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/universityName"
+                android:text="university name"
+                android:textSize="16sp"
+                android:textAllCaps="true"
+                android:textColor="@android:color/background_dark"
+                android:gravity="center_horizontal"
+                android:layout_marginBottom="4dp" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:id="@+id/empty"
+                android:background="@color/design_default_color_primary"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/universityState"
+                android:text="university state"
+                android:textSize="16sp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/universityType"
+                android:text="university type"
+                android:textSize="16sp"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@android:color/darker_gray"/>
+            <RatingBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/ratings"
+                android:isIndicator="true"
+                android:numStars="5"
+                style="?android:attr/ratingBarStyleSmall"
+                ></RatingBar>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
