@@ -1,4 +1,4 @@
-package com.example.calculator;
+package com.example.calculator.view;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.calculator.R;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText usernameEditText, passwordEditText;
