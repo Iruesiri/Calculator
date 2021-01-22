@@ -1,4 +1,4 @@
-package com.example.calculator;
+package com.example.calculator.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,6 +9,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.calculator.R;
+import com.example.calculator.model.UniversityModel;
+
 import java.util.ArrayList;
 
 /**
@@ -17,9 +20,9 @@ import java.util.ArrayList;
  * @created : 20/01/2021 11:54
  */
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
-   ArrayList<String> universities;
+   ArrayList<UniversityModel> universities;
    Context context;
-    public RecyclerViewAdapter(ArrayList<String> universities, Context context) {
+    public RecyclerViewAdapter(ArrayList<UniversityModel> universities, Context context) {
         this.universities = universities;
         this.context = context;
     }
@@ -33,7 +36,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.universityName.setText(universities.get(position));
+        holder.universityName.setText(universities.get(position).getUniversityName());
+        holder.universityState.setText(universities.get(position).getUniversityState());
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.example.calculator;
+package com.example.calculator.view;
 
 import android.os.Bundle;
 import android.view.View;
@@ -6,6 +6,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.calculator.R;
 
 public class MainActivity extends AppCompatActivity {
    //public static final String TAG = "tag";
