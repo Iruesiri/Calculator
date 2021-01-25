@@ -1,5 +1,6 @@
 package com.example.calculator;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
@@ -13,12 +14,12 @@ import java.net.URL;
 
 public class HttpPractice extends AsyncTask<String, Void, String> {
     Context context;
-    String[] params;
+    private ProgressDialog progressDialog;
+
     public static final String TAG = "TAG";
-    public HttpPractice(Context context, String[] params){
+    public HttpPractice(Context context){
         this.context = context;
-        this.params = params;
-        Log.d(TAG, "HttpPractice: "+ params.length);
+
     }
     @Override
     protected String doInBackground(String... params) {
@@ -27,6 +28,8 @@ public class HttpPractice extends AsyncTask<String, Void, String> {
         String username, password;
         username = params[0];
         password = params[1];
+        Log.d(TAG, "doInBackground: " + params[0]);
+        Log.d(TAG, "doInBackground: "+params[1]);
 
         try {
             URL url = new URL("http://www.app.powergenltd.com/login.php?user_name=" + username + "&pass_word="+ password);
@@ -59,6 +62,21 @@ public class HttpPractice extends AsyncTask<String, Void, String> {
     @Override
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
+        progressDialog.dismiss();
         Toast.makeText(context, s, Toast.LENGTH_LONG).show();
+
+    }
+
+    @Override
+    protected void onPreExecute() {
+        super.onPreExecute();
+        progressDialog = new ProgressDialog(context);
+        progressDialog.setTitle("Please Wait");
+        progressDialog.setMessage("wait");
+        progressDialog.setCancelable(true);
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDialog.setCanceledOnTouchOutside(false);
+        progressDialog.show();
+
     }
 }

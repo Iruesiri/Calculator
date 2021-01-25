@@ -7,7 +7,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.calculator.R;
-import com.example.calculator.adapter.RecyclerViewAdapter;
+
+import com.example.calculator.RecyclerViewAdapter;
 import com.example.calculator.model.UniversityModel;
 
 import java.util.ArrayList;
