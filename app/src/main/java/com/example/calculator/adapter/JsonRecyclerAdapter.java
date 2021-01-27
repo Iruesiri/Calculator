@@ -26,7 +26,7 @@ public class JsonRecyclerAdapter extends RecyclerView.Adapter<JsonRecyclerAdapte
     @NonNull
     @Override
     public JsonRecyclerAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.activity_jsonpractice, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.jsonitem, parent, false);
         return new JsonRecyclerAdapter.ViewHolder(view);
     }
 

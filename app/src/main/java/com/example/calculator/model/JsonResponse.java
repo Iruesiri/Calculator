@@ -5,6 +5,8 @@ import android.util.Log;
 
 import com.example.calculator.JsonActivity;
 import com.example.calculator.adapter.JsonRecyclerAdapter;
+import com.example.calculator.callbacks.JsonResponseCallback;
+import com.example.calculator.view.JsonRecyclerActivity;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -22,6 +24,7 @@ import java.util.List;
 public class JsonResponse extends AsyncTask<String, String, String> {
     String singleParsed = ""; String dataParsed = "";
     public static final String TAG ="";
+    JsonResponseCallback jsonResponseCallback;
 
     @Override
     protected String doInBackground(String... params) {
@@ -85,9 +88,14 @@ public class JsonResponse extends AsyncTask<String, String, String> {
             ExampleResponse exampleResponse = gson.fromJson(jsonElement, ExampleResponse.class);
             exampleResponseList.add(exampleResponse);
         }
+        //JsonRecyclerAdapter jsonRecyclerActivity = new JsonRecyclerAdapter(exampleResponseList, JsonActivity.this);
+
         Log.d(TAG, "onPostExecute: " + exampleResponseList);
-        //new JsonRecyclerAdapter(exampleResponseList, JsonActivity.this);
+        jsonResponseCallback.getResponse(exampleResponseList);
         // jsonItem.setText(s);
+    }
+    public void jsonCallback(JsonResponseCallback jsonResponseCallback){
+        this.jsonResponseCallback = jsonResponseCallback;
     }
 
 }
