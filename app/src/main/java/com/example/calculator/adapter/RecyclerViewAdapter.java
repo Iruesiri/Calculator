@@ -1,4 +1,4 @@
-package com.example.calculator;
+package com.example.calculator.adapter;
 
 import android.content.Context;
 import android.media.Rating;
@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.calculator.R;
 import com.example.calculator.model.UniversityModel;
 
 import java.util.ArrayList;

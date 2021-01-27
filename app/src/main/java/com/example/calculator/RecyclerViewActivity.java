@@ -6,7 +6,7 @@ import android.util.Log;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import com.example.calculator.RecyclerViewAdapter;
+import com.example.calculator.adapter.RecyclerViewAdapter;
 import com.example.calculator.model.UniversityModel;
 
 

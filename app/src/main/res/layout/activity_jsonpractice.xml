@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".JsonActivity"
+    android:orientation="vertical"
+    android:paddingBottom="16dp"
+    android:paddingTop="16dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp">
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/jsonBtn"
+        android:text="Click me"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/screenlay"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:id="@+id/jsonItem"
+                android:text="Employeee ID"
+                android:background="@android:drawable/editbox_background"
+                android:gravity="center_vertical"
+                android:textSize="20sp"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="4">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/nameKey"
+                android:layout_margin="2dp"
+                android:layout_weight="1"
+                android:textSize="20sp"
+                android:text="Name: " />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/nameValue"
+                android:layout_margin="2dp"
+                android:layout_weight="3"
+                android:textSize="20sp"
+                android:text="Dummy value" />
+        </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="4">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/countryKey"
+            android:layout_margin="2dp"
+            android:layout_weight="1"
+            android:textSize="20sp"
+            android:text="Country: " />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/countryValue"
+            android:layout_margin="2dp"
+            android:layout_weight="3"
+            android:textSize="20sp"
+            android:text="Dummy value" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="4">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/houseKey"
+            android:layout_margin="2dp"
+            android:layout_weight="1"
+            android:textSize="20sp"
+            android:text="House: " />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/houseValue"
+            android:layout_margin="2dp"
+            android:layout_weight="3"
+            android:textSize="20sp"
+            android:text="Dummy value" />
+    </LinearLayout>
+</LinearLayout>

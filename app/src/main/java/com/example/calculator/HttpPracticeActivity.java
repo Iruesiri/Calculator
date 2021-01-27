@@ -6,18 +6,22 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.calculator.model.LoginResponse;
+import com.google.gson.Gson;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class HttpPractice extends AsyncTask<String, Void, String> {
+public class HttpPracticeActivity extends AsyncTask<String, Void, String> {
     Context context;
     private ProgressDialog progressDialog;
+    private LoginInterface loginInterface;
 
     public static final String TAG = "TAG";
-    public HttpPractice(Context context){
+    public HttpPracticeActivity(Context context){
         this.context = context;
 
     }
@@ -63,8 +67,10 @@ public class HttpPractice extends AsyncTask<String, Void, String> {
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
         progressDialog.dismiss();
-        Toast.makeText(context, s, Toast.LENGTH_LONG).show();
-
+        Gson gson = new Gson();
+        LoginResponse loginResponse = gson.fromJson(s, LoginResponse.class);
+       // Toast.makeText(context, loginResponse.getMessage(), Toast.LENGTH_LONG).show();
+        loginInterface.loginResponse(loginResponse);
     }
 
     @Override
@@ -77,6 +83,12 @@ public class HttpPractice extends AsyncTask<String, Void, String> {
         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progressDialog.setCanceledOnTouchOutside(false);
         progressDialog.show();
+    }
+    public interface LoginInterface{
+        void loginResponse(LoginResponse response);
+    }
+    public void loginResponseArrived(LoginInterface loginInterface){
+        this.loginInterface = loginInterface;
 
     }
 }
