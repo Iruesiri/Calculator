@@ -3,10 +3,7 @@ package com.example.calculator.model;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.example.calculator.JsonActivity;
-import com.example.calculator.adapter.JsonRecyclerAdapter;
 import com.example.calculator.callbacks.JsonResponseCallback;
-import com.example.calculator.view.JsonRecyclerActivity;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;

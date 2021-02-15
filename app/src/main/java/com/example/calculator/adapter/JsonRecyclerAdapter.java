@@ -32,7 +32,7 @@ public class JsonRecyclerAdapter extends RecyclerView.Adapter<JsonRecyclerAdapte
 
     @Override
     public void onBindViewHolder(@NonNull JsonRecyclerAdapter.ViewHolder holder, int position) {
-        holder.jsonItem.setText(items.get(position).getID());
+        holder.jsonItem.setText(items.get(position).getID().toString());
         holder.nameItem.setText(items.get(position).getName());
         holder.countryItem.setText(items.get(position).getCountry());
         holder.houseItem.setText(items.get(position).getHouse());

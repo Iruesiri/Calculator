@@ -17,8 +17,7 @@ public class LoginActivity extends AppCompatActivity implements HttpPracticeActi
     private EditText usernameEditText, passwordEditText;
     private String username, password;
     private Button login;
-
-
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
